@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Three Year Valentine's Celebration</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background: #fff0f5;
+        color: #333;
+        scroll-behavior: smooth;
+    }
+
+    section {
+        padding: 80px 10%;
+        text-align: center;
+    }
+
+    h1, h2 {
+        color: #c2185b;
+        margin-bottom: 20px;
+    }
+
+    p {
+        max-width: 800px;
+        margin: auto;
+        line-height: 1.7;
+        font-size: 18px;
+        color: pink;
+        background-color: red;
+    }
+
+    /* HERO */
+    /* .hero {
+        background: linear-gradient(to right, #ff758c, #ff7eb3);
+        /* color: white; */
+        /* height: 90vh; */
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* background-image: url(images/img1.jpg); */
+        /* background-repeat: no-repeat; */
+        /* background-size: cover; */
+        
+
+    /* } */ */
+
+    .hero {
+    background-image: url(images/img1.jpg);
+        /* linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), */
+        /* url(images/img1.jpg); */
+
+    background-size: cover;       /* Makes it fill without repeating */
+    background-position: center;  /* Keeps image centered */
+    background-repeat: no-repeat; 
+    background-attachment: fixed; /* Optional cinematic effect */
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    /* CAROUSEL
+    .carousel {
+        position: relative;
+        max-width: 800px;
+        margin: 40px auto;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slides img {
+        width: 100%;
+        border-radius: 15px;
+    } */
+
+.carousel {
+    position: relative;
+    width: 90%;
+    max-width: 500px;   /* narrower because images are portrait */
+    height: 650px;      /* taller to match portrait shape */
+    margin: 60px auto;
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slides img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+    .buttons {
+        margin-top: 15px;
+    }
+
+    .buttons button {
+        padding: 10px 20px;
+        border: none;
+        background: #c2185b;
+        color: white;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 20px;
+    }
+
+    /* MAGAZINE */
+    .magazine {
+        background: #ffe4ec;
+        border-radius: 20px;
+    }
+
+    /* FLOWERS */
+    .flowers img {
+        width: 250px;
+        margin-top: 20px;
+    }
+
+    /* LOVE MESSAGE */
+    .love-letter {
+        background: linear-gradient(to right, #ffdde1, #ee9ca7);
+        border-radius: 20px;
+        color: #5a0033;
+    }
+
+    /* EXTRA SECTION */
+    .timeline {
+        background: #fff;
+    }
+
+    .timeline div {
+        margin: 20px 0;
+        font-size: 18px;
+    }
+
+    footer {
+        background: #c2185b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .valentine-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.popup-content h2 {
+    color: #c2185b;
+}
+
+.popup-content h3 {
+    margin-top: 20px;
+    color: #ff4081;
+}
+
+.popup-buttons {
+    margin-top: 25px;
+}
+
+.popup-buttons button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.yes-btn {
+    background: #c2185b;
+    color: white;
+}
+
+.no-btn {
+    background: #ccc;
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- Valentine Popup -->
+<div class="valentine-popup" id="valPopup">
+    <div class="popup-content">
+        <h2>Hi Stacy ❤️</h2>
+        <p>
+            From the very first day, you've made my world brighter.  
+            Through every laugh, every challenge, and every beautiful memory…  
+            you’ve been my favorite person.  
+
+            So I have one important question…
+        </p>
+
+        <h3>Will you be my Valentine? 💘</h3>
+
+        <div class="popup-buttons">
+            <button class="yes-btn" onclick="acceptLove()">Yes 💖</button>
+            <button class="no-btn" id="noBtn">No 😅</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Our Three Year Valentine's Celebration ❤️</h1>
+    <p>Three years. Countless memories. One beautiful love story.</p>
+</section>
+
+<!-- CAROUSEL -->
+<section>
+    <h2>Our Favorite Moments 📸</h2>
+
+    <div class="carousel">
+        <div class="slides" id="slides">
+            <!-- Replace these images with yours -->
+            <img src="images/fav3.jpg" alt="Memory 1" width=" 250px" height="= 250px">
+            <img src="images/fav1.jpg" alt="Memory 2">
+            <img src="images/fav5.jpg" alt="Memory 3">
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="prevSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+</section>
+
+<!-- CUPID'S MAGAZINE -->
+<section class="magazine">
+    <h2>Cupid's Magazine 🏹💘</h2>
+    <p>
+        A special edition written by fate and sealed with love.  
+        This magazine is not just pages and ink — it is a celebration of us.  
+        Every chapter reflects our laughter, our growth, our late-night talks,
+        and the silent understanding only we share.  
+        I bought this not just as a gift, but as a reminder that our love
+        deserves to be documented, celebrated, and remembered forever.
+    </p>
+</section>
+
+<!-- Magic love box -->
+    <section class="magic-box">
+    <h2>The Magic Love Box ✨🎁</h2>
+
+    <div class="box-container">
+        <div class="love-box">
+            💌
+        </div>
+    </div>
+
+    <p class="magic-text">
+        Inside this little box is more than just a letter.  
+        It holds every unspoken feeling, every silent prayer,
+        every “I love you” whispered in my heart when words weren’t enough.  
+
+        This box carries pieces of our journey — the laughter, the tears,
+        the growth, the forgiveness, and the beautiful chaos that made us stronger.  
+        If love had a physical form, it would live right here,
+        folded gently between ink and paper,
+        sealed with intention,
+        and opened with forever in mind.
+    </p>
+</section>
+
+
+ 
+
+<!-- FLOWER PRESENTATION -->
+<section class="flowers">
+    <h2>A Flower For My Forever 🌹</h2>
+    <img src="images/flower.jpg" alt="Flowers"> <!-- Replace with your flower image -->
+    <p>
+        Just like these flowers, your presence brightens my life.
+        Soft, beautiful, yet strong enough to bloom in every season.
+    </p>
+</section>
+
+<!-- LOVE LETTER -->
+<section class="love-letter">
+    <h2>Through Every High and Low 💌</h2>
+    <p>
+        Three years ago, we started something beautiful.  
+        It hasn’t always been perfect — we’ve had misunderstandings,
+        tough days, and moments where life tested us.  
+        But through every storm, we chose each other.  
+        We grew. We learned. We stayed.  
+
+        Loving you has been the most beautiful journey of my life.
+        Through laughter and tears, silence and celebration,
+        easy days and challenging nights —  
+        my heart has always found its home in you.  
+
+        And if I had to choose again,
+        in every lifetime,
+        in every universe,
+        I would still choose you.
+    </p>
+</section>
+
+<!-- EXTRA SECTION (YOU LEFT THIS OUT 😉) -->
+<section class="timeline">
+    <h2>Our Love Timeline ⏳</h2>
+    <div>💞 Year 1 – Learning each other</div>
+    <div>💖 Year 2 – Growing stronger together</div>
+    <div>❤️ Year 3 – Unbreakable and deeper than ever</div>
+</section>
+
+<footer>
+    Made with love for our 3rd Valentine's ❤️ | Forever & Always
+</footer>
+
+<script>
+    let index = 0;
+    const slides = document.getElementById("slides");
+
+    function showSlide() {
+        slides.style.transform = "translateX(" + (-index * 100) + "%)";
+    }
+
+    function nextSlide() {
+        if (index < 2) {
+            index++;
+        } else {
+            index = 0;
+        }
+        showSlide();
+    }
+
+    function prevSlide() {
+        if (index > 0) {
+            index--;
+        } else {
+            index = 2;
+        }
+        showSlide();
+    }
+</script>
+
+<script>
+function acceptLove() {
+    document.getElementById("valPopup").style.display = "none";
+    alert("Too bad you can't say no to me ❤️");
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+</script>
+
+
+</body>
+</html>
